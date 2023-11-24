@@ -1,0 +1,36 @@
+{
+  "tanulok": [
+    {
+      "id": 1,
+      "vezeteknev": "Létai",
+      "keresztnev": "Aranka",
+      "kor": 15,
+      "szuletesi_hely": "Orosháza",
+      "email": "aranka@suli.hu"
+    },
+    {
+      "id": 2,
+      "vezeteknev": "Kiss",
+      "keresztnev": "Áron",
+      "kor": 17,
+      "szuletesi_hely": "Gyula",
+      "email": "aron@suli.hu"
+    },
+    {
+      "id": 3,
+      "vezeteknev": "Kósa",
+      "keresztnev": "Géza",
+      "kor": 13,
+      "szuletesi_hely": "Békéscsaba",
+      "email": "geza@suli.hu"
+    },
+    {
+      "vezeteknev": "Muhari",
+      "keresztnev": "Elek",
+      "kor": 18,
+      "szuletesi_hely": "Sarkad",
+      "email": "elek@suli.hu",
+      "id": 4
+    }
+  ]
+}
