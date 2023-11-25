@@ -1,16 +1,18 @@
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate,useLocation} from "react-router-dom";
 
-function TanuloForm() {
+function TanuloFormMod() {
   const navigate=useNavigate();
+  const {state}=useLocation();
+  const {tanulo}=state;
 
   let formObj={
-    vezeteknev:"",
-    keresztnev:"",
-    om_azonosito:"",
-    kor:"",
-    szuletesi_hely:"",
-    email:""
+    vezeteknev:tanulo.vezeteknev,
+    keresztnev:tanulo.keresztnev,
+    kor:tanulo.kor,
+    om_azonosito:tanulo.om_azonosito,
+    szuletesi_hely:tanulo.szuletesi_hely,
+    email:tanulo.email
   }
 
   const[formData,setFormData]=useState(formObj);
@@ -20,8 +22,8 @@ function TanuloForm() {
   }
 
   const adatkuldes=async ()=>{
-    const keres=await fetch("http://localhost:8000/tanulok",{
-      method:"POST",
+    const keres=await fetch(`http://localhost:8000/tanulok/${tanulo.id}`,{
+      method:"PATCH",
       headers:{"Content-type":"application/json"},
       body:JSON.stringify(formData)
     });
@@ -46,7 +48,7 @@ function TanuloForm() {
 
   return (
     <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 justify-items-center">
-      <h1 className="text-xl font-bold text-center">Új tanuló rögzítése</h1>
+      <h1 className="text-xl font-bold text-center">Tanuló adatainak módosítása</h1>
       <form onSubmit={onSubmit}>
         <div>
       <input type="text" id="vezeteknev" onChange={writeFormData} required value={formData.vezeteknev} placeholder="vezetéknév" className="input input-bordered input-info w-full max-w-xs" />
@@ -74,4 +76,4 @@ function TanuloForm() {
   )
 }
 
-export default TanuloForm
+export default TanuloFormMod;

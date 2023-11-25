@@ -1,18 +1,31 @@
-import { useState,useEffect } from "react"
-import Tanulo from "./Tanulo";
+import {useContext } from "react"
+import TanuloContext from '../context/TanuloContext';
+import Tanulo from './Tanulo';
+
 
 function Tanulok() {
-    const[tanulok,setTanulok]=useState([]);
-    const[isLoading,setIsLoading]=useState(false);
 
-    useEffect(()=>{
-      setIsLoading(true);
-      fetch('http://localhost:8000/tanulok')
-      .then(res=>res.json())
-      .then(tanulok=>{setTanulok(tanulok); setIsLoading(false);})
-      .catch(err=>console.log(err));
+    const {tanulok,isLoading,update}=useContext(TanuloContext);
 
-    },[])
+    
+
+
+    // const[tanulok,setTanulok]=useState([]);
+    // const[isLoading,setIsLoading]=useState(false);
+    // const[refresh,setRefresh]=useState(false);
+
+    // const update=()=>{
+    //   setRefresh(prev=>!prev);
+    // }
+
+    // useEffect(()=>{
+    //   setIsLoading(true);
+    //   fetch('http://localhost:8000/tanulok')
+    //   .then(res=>res.json())
+    //   .then(tanulok=>{setTanulok(tanulok); setIsLoading(false);})
+    //   .catch(err=>console.log(err));
+
+    // },[refresh])
 
   return (
     <div>
@@ -25,7 +38,7 @@ function Tanulok() {
         </>:
         <>
         {
-         tanulok.map((tanulo,i)=>(<Tanulo key={i} tanulo={tanulo} />))
+         tanulok.map((tanulo,i)=>(<Tanulo key={i} tanulo={tanulo} update={update} />))
         }
         </>
       }
