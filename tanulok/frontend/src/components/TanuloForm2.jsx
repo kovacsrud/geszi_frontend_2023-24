@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import TanuloContext from "../context/TanuloContext";
 import {useNavigate,useLocation} from "react-router-dom";
 
 function TanuloForm2() {
   const navigate=useNavigate();
+  const{adatkuldes}=useContext(TanuloContext);
   const {state}=useLocation();
   let url="http://localhost:8000/tanulok/";
   let method="POST";
@@ -43,16 +45,16 @@ function TanuloForm2() {
     setFormData((prev)=>({...prev,[e.target.id]:e.target.value}));
   }
 
-  const adatkuldes=async (url,method,formData)=>{
-    const keres=await fetch(url,{
-      method:method,
-      headers:{"Content-type":"application/json"},
-      body:JSON.stringify(formData)
-    });
+  // const adatkuldes=async (url,method,formData)=>{
+  //   const keres=await fetch(url,{
+  //     method:method,
+  //     headers:{"Content-type":"application/json"},
+  //     body:JSON.stringify(formData)
+  //   });
 
-    const valasz=await keres.text();
-    alert(valasz);
-  }
+  //   const valasz=await keres.text();
+  //   alert(valasz);
+  // }
   
   const onSubmit=(e)=>{
     e.preventDefault();
