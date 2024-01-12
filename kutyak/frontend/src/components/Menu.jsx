@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 
 function Menu() {
   return (
@@ -16,9 +17,11 @@ function Menu() {
         <div
             className="absolute left-0 w-40 mt-1 origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
             <div className="py-1">
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kutyanevek</a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kutyafajták</a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Rendelési adatok</a>
+                <Link to={'/kutyanevek'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kutyanevek</Link>
+                <Link to={'/kutyafajtak'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kutyafajták</Link>
+                <Link to={'/kutyalista'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Rendelési adatok</Link>
+                <Link to={'/kutyaform'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Új rendelési adat</Link>
+                <Link to={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Főoldal</Link>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ import KutyaForm from './components/KutyaForm';
 import Main from './components/Main';
 import KutyaLista from './components/KutyaLista';
 import Menu from './components/Menu';
+import { KutyaProvider } from './context/KutyaContext';
 
 
 function App() {
@@ -14,14 +15,17 @@ function App() {
     <div>
       <h1 className="text-5xl font-bold text-center">Állatorvosi rendelő</h1>
       <BrowserRouter>
+      <KutyaProvider>
       <Menu />
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/kutyanevek' element={<KutyaNevek />}/>
         <Route path='/kutyafajtak' element={<KutyaFajtak />} />
         <Route path='/kutyalista' element={<KutyaLista />} />
+        <Route path='/kutyaform' element={<KutyaForm />} />
         <Route path='*' element={<Navigate to={'/'} />} />
       </Routes>
+      </KutyaProvider>
       </BrowserRouter>
      
       
