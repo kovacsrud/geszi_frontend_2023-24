@@ -6,6 +6,7 @@ import Vedett from './components/Vedett';
 import Menu from './components/Menu';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserProvider } from './context/UserContext';
 
 function App() {
  
@@ -13,6 +14,7 @@ function App() {
   return (
     <div>
       <h1 className="text-5xl font-bold text-center">User Login</h1>
+      <UserProvider>
       <Router>
         <Menu />
         <Routes>
@@ -24,6 +26,7 @@ function App() {
         </Routes>
       </Router>
       <ToastContainer />
+      </UserProvider>
      
     </div>
   )

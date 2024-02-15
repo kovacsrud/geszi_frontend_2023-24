@@ -3,13 +3,14 @@ import { useState,useEffect } from "react";
 import {toast} from 'react-toastify';
 
 function Vedett() {
-    const [vedettAdat,setVedettAdat]=useState({});
+    const [vedettAdat,setVedettAdat]=useState(null);
     const navigate=useNavigate();
     const token=sessionStorage.getItem('usertoken');
+    //const token="$ggret564677";
 
     useEffect(()=>{
         if(token){
-            fetch('http://localhost:8000/api/user/vedett',{
+            fetch(`${import.meta.env.VITE_BASE_URL}/api/user/vedett`,{
                 method:'GET',
                 headers:{
                     "Content-type":"application/json",
@@ -32,7 +33,10 @@ function Vedett() {
     },[])
 
   return (
-    <div>Vedett</div>
+    <div>
+        <h2>Védett infók</h2>
+        <p>{vedettAdat}</p>
+    </div>
   )
 }
 

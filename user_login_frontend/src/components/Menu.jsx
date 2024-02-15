@@ -1,6 +1,17 @@
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
+import { useContext } from 'react';
+import UserContext from '../context/UserContext';
+
 
 function Menu() {
+
+    const{refresh,logout}=useContext(UserContext);
+    const navigate=useNavigate();
+    const token=sessionStorage.getItem('usertoken');
+    const kilepes=()=>{
+        sessionStorage.removeItem('usertoken');
+    }
+
   return (
     <div>
          <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -45,15 +56,30 @@ function Menu() {
                             <li>
                                 <Link to={'/'} className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Főoldal</Link>
                             </li>
-                            <li>
-                                <Link to={'/register'} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Regisztráció</Link>
-                            </li>
-                            <li>
-                                <Link to={'/login'} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Belépés</Link>
-                            </li>
-                            <li>
-                                <Link to={'/vedett'} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Védett infók</Link>
-                            </li>
+                            {
+                                token ? 
+                                <>
+                                    <li>
+                                        <Link to={'/vedett'} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Védett infók</Link>
+                                    </li>
+                                    <li>
+                                        <a onClick={()=>{logout();navigate('/')}} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Kilépés</a>
+                                    </li>
+                                    
+                                </>
+                                :
+                                <>
+                                    <li>
+                                        <Link to={'/register'} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Regisztráció</Link>
+                                    </li>
+                                    <li>
+                                        <Link to={'/login'} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Belépés</Link>
+                                    </li>
+                                </>
+                            }
+                           
+                            
+                            
                             
                         </ul>
                     </div>
