@@ -1,0 +1,32 @@
+<h1 class="text-3xl text-center font-bold m-5">Lista megjelenítés</h1>
+
+
+<div class="flex flex-col items-center">
+<ul>
+
+
+<ng-container *ngIf="nevek.length>0;else ureslista">
+    <ng-container *ngFor="let nev of nevek">
+        <li>{{nev}}</li>
+    </ng-container>
+</ng-container>
+</ul>
+
+<div class="bg-white p-4 rounded-lg">
+    <div class="relative bg-inherit">
+        <form (submit)="elemHozzaad($event)">
+            <label for="name" class="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all">Új név hozzáadása</label>        
+            <input type="text" id="name" name="name" class="peer bg-transparent h-10 w-72 rounded-lg text-gray-800 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-rose-600" placeholder="Type inside me"/>
+            <button type="submit" class="btn btn-primary">Hozzáadás</button>
+        </form>
+    </div>
+</div>
+</div>
+
+<ng-template #ureslista>
+    <p class="text-xl font-bold">A lista üres!</p>
+</ng-template>
+
+<ng-template #telelista>
+    <p class="text-xl font-bold">A lista megtelt!</p>
+</ng-template>
