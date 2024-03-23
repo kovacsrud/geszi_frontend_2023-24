@@ -35,9 +35,7 @@ function ImageUpload() {
             body:adat
         })
         .then(res=>res.json())
-        .then(valasz=>{
-            toast.success(valasz.message);
-            update()})
+        .then(valasz=>{toast.success(valasz.message);update()})
         .catch(err=>toast.error(err));
     }
 

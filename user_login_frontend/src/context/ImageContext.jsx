@@ -19,9 +19,7 @@ export const ImageProvider=({children})=>{
             body:JSON.stringify({"imageId":imageId})
         })
         .then(res=>res.json())
-        .then(valasz=>{
-            toast.success(valasz.message);
-            update()})
+        .then(valasz=>{toast.success(valasz.message);update()})
         .catch(err=>toast.error(err))
     }
 
