@@ -1,21 +1,19 @@
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 function Menu() {
-    return (
-        <div className="navbar bg-sky-100">
-            <div className="flex-1">
-                <Link to={"/"} className="btn btn-ghost normal-case text-xl">Főoldal</Link>
-            </div>
-            <div className="flex-none">
-                <ul className="menu menu-horizontal px-1">
-                    <li><Link to={"/artists"}>Előadók</Link></li>
-                    <li><Link to={"/albums"}>Albumok</Link></li>
-                    <li><Link to={"/newartist"}>Új előadó felvétele</Link></li>
-                    <li><Link to={"/newalbum"}>Új album felvétele</Link></li>
-                </ul>
-            </div>
-        </div>
-    )
+  return (
+
+    <nav className="my-5 bg-gray-800 text-white py-3 px-4 flex items-center justify-between">
+      <Link to={"/"} className="font-bold text-xl tracking-tight">Főoldal</Link>
+      <div className="flex items-center">
+        <Link to={"/eloadok"} className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" >Előadók</Link>
+        <Link to={"/kategoriak"} className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" >Kategóriák</Link>
+        <Link to={"/ujkategoria"} className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" >Új kategória</Link>
+      </div>
+    </nav>
+
+
+  )
 }
 
 export default Menu

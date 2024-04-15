@@ -1,11 +1,9 @@
 
 
-function Header({headerText}) {
+function Header({fejlecSzoveg}) {
   return (
-    <h1 className="text-3xl text-center font-bold bg-sky-200 text-sky-800 p-2">
-        {headerText}
-    </h1>
+    <h1 className="text-5xl font-bold text-center">{fejlecSzoveg}</h1>
   )
 }
 
-export default Header;
+export default Header
