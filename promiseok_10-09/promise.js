@@ -1,11 +1,11 @@
-let p1=new Promise((reject,resolve)=>{
+let p1=new Promise((resolve,reject)=>{
     resolve(100);
 });
 
 p1.then(adat=>console.log(adat)).catch(err=>console.log(err));
 
 let p2=function(a,b){
-    return new Promise((reject,resolve)=>{
+    return new Promise((resolve,reject)=>{
         if(a>b){
             resolve(a);
         } else {
