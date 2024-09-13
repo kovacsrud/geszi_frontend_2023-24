@@ -17,7 +17,7 @@ let p2=function(a,b){
 p2(5,10).then(ertek=>console.log(ertek)).catch(err=>console.log(err));
 
 //Több promise-t is összeköthetünk.
-p2(10,5).then(ertek=>p2(p1,ertek)).then(ertek=>console.log(ertek)).catch(err=>console.log(err));
+p2(10,5).then(ertek=>p2(100,ertek)).then(ertek=>console.log(ertek)).catch(err=>console.log(err));
 
 async function promiseok(){
     try {
